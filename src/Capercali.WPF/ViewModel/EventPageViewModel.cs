@@ -1,6 +1,6 @@
 namespace Capercali.WPF.ViewModel
 {
-    class EventPageViewModel : IEventPageViewModel
+    internal class EventPageViewModel : IEventPageViewModel
     {
         private readonly IMainViewModel mainViewModel;
 

@@ -82,8 +82,8 @@
     <Compile Include="Pages\EventSelectionPage.xaml.cs">
       <DependentUpon>EventSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\DesignTimeDataModule.cs" />
-    <Compile Include="ViewModel\DesignTimeEventService.cs" />
+    <Compile Include="DesignTimeServices\DesignTimeDataModule.cs" />
+    <Compile Include="DesignTimeServices\DesignTimeEventService.cs" />
     <Compile Include="ViewModel\EventPageViewModel.cs" />
     <Compile Include="ViewModel\IEventPageViewModel.cs" />
     <Compile Include="ViewModel\IMainViewModel.cs" />

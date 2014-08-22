@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Raven.Client;
+﻿using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Embedded;
 
-namespace Capercali.DataAccess.Services
+namespace Capercali.DataAccess.RavenDB
 {
-    public  class RavenService
+    public class RavenService
     {
+        public IAsyncDocumentSession session;
         private DocumentStore store;
 
         public DocumentStore Store
         {
-            get
-            {
-                return store ?? (store = GetStore());
-            }
+            get { return store ?? (store = GetStore()); }
         }
 
         public IAsyncDocumentSession Session
@@ -33,7 +26,6 @@ namespace Capercali.DataAccess.Services
 
         private DocumentStore GetStore()
         {
-
             var documentStore = new EmbeddableDocumentStore
             {
                 DataDirectory = "Data"
@@ -41,7 +33,5 @@ namespace Capercali.DataAccess.Services
             documentStore.Initialize();
             return documentStore;
         }
-
-        public IAsyncDocumentSession session;
     }
 }

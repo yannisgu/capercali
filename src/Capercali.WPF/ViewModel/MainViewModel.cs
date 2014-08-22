@@ -1,48 +1,46 @@
+using System;
 using System.Collections.Generic;
 using Capercali.DataAccess.Services;
 using Capercali.Entities;
 using Capercali.WPF.Navigation;
+using Capercali.WPF.Pages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
 namespace Capercali.WPF.ViewModel
 {
     /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
+    ///     This class contains properties that the main View can data bind to.
+    ///     <para>
+    ///         Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
+    ///     </para>
+    ///     <para>
+    ///         You can also use Blend to data bind with the tool's support.
+    ///     </para>
+    ///     <para>
+    ///         See http://www.galasoft.ch/mvvm
+    ///     </para>
     /// </summary>
     public class MainViewModel : ViewModelBase, IMainViewModel
     {
         private readonly IEventsService eventsService;
         private readonly INavigation navigation;
         private IEnumerable<Event> events;
+        private RelayCommand openEvent;
+        private Event selectedEvent;
 
         /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
+        ///     Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel(IEventsService eventsService, INavigation navigation)
         {
             this.eventsService = eventsService;
             this.navigation = navigation;
 
-            Load(eventsService);
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            Load();
         }
+
+        private RelayCommand newEvent;
 
         public RelayCommand OpenEvent
         {
@@ -54,24 +52,6 @@ namespace Capercali.WPF.ViewModel
             get { return newEvent ?? (newEvent = new RelayCommand(DoNewEvent)); }
         }
 
-        private void DoNewEvent()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void DoOpenEvent()
-        {
-            navigation.Open<Pages.EventPage>();
-        }
-
-        private async void Load(IEventsService eventsService)
-        {
-            
-            Events = await eventsService.GetAll();
-        }
-
-        public string FullName { get; set; }
-
         public IEnumerable<Event> Events
         {
             get { return events; }
@@ -80,7 +60,7 @@ namespace Capercali.WPF.ViewModel
 
         public bool IsEventSelected
         {
-            get {return SelectedEvent != null; }
+            get { return SelectedEvent != null; }
         }
 
         public Event SelectedEvent
@@ -93,9 +73,19 @@ namespace Capercali.WPF.ViewModel
             }
         }
 
-        private RelayCommand openEvent;
-        private Event selectedEvent;
+        private void DoNewEvent()
+        {
+            throw new NotImplementedException();
+        }
 
-        public RelayCommand newEvent { get; set; }
+        private void DoOpenEvent()
+        {
+            navigation.Open<EventPage>();
+        }
+
+        private async void Load()
+        {
+            Events = await eventsService.GetAll();
+        }
     }
 }

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Capercali.WPF.Navigation
+﻿namespace Capercali.WPF.Navigation
 {
     public interface INavigation
     {
         void Open<T>();
+        void GoBack();
     }
 }

@@ -81,10 +81,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RavenDB\EventsService.cs" />
+    <Compile Include="RavenDB\RavenEventsService.cs" />
     <Compile Include="RavenDB\RavenModule.cs" />
     <Compile Include="Services\IEventsService.cs" />
     <Compile Include="RavenDB\RavenService.cs" />
+    <Compile Include="NDatabase\NDatabaseModule.cs" />
+    <Compile Include="NDatabase\NDatabaseBaseService.cs" />
+    <Compile Include="NDatabase\NDatabaseEventsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

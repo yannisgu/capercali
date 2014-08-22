@@ -1,29 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace Capercali.WPF.Navigation
 {
-    class Navigation : INavigation
+    internal class Navigation : INavigation
     {
         private Frame _mainFrame;
 
-        #region Implementation of INavigationService
 
         public event NavigatingCancelEventHandler Navigating;
-        public void NavigateTo(Uri pageUri)
-        {
 
-            if (EnsureMainFrame())
-            {
-                _mainFrame.Navigate(pageUri);
-            }
-
-        }
 
         public void GoBack()
         {
@@ -32,10 +20,15 @@ namespace Capercali.WPF.Navigation
             {
                 _mainFrame.GoBack();
             }
-
         }
 
-        #endregion
+        public void Open<T>()
+        {
+            if (EnsureMainFrame())
+            {
+                _mainFrame.Navigate(typeof (T).GetConstructor(new Type[] {}).Invoke(new object[] {}));
+            }
+        }
 
         private bool EnsureMainFrame()
         {
@@ -44,7 +37,7 @@ namespace Capercali.WPF.Navigation
                 return true;
             }
 
-            var mainWindow = System.Windows.Application.Current.MainWindow as MainWindow;
+            var mainWindow = Application.Current.MainWindow as MainWindow;
             if (mainWindow != null)
                 _mainFrame = mainWindow.Frame;
 
@@ -63,14 +56,6 @@ namespace Capercali.WPF.Navigation
             }
 
             return false;
-        }
-
-        public void Open<T>()
-        {
-            if (EnsureMainFrame())
-            {
-                _mainFrame.Navigate(typeof (T).GetConstructor(new Type[] {}).Invoke(new object[] {}));
-            }
         }
     }
 }
