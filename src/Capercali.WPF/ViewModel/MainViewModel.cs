@@ -85,6 +85,7 @@ namespace Capercali.WPF.ViewModel
 
         private async void Load()
         {
+            await eventsService.UpdateEvent(new Event() {Name = "Test1"});
             Events = await eventsService.GetAll();
         }
     }

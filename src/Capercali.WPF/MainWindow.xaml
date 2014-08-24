@@ -2,6 +2,14 @@
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:pages="clr-namespace:Capercali.WPF.Pages"
                       Title="Capercali">
-    <Frame Name="frame" Source="Pages/EventSelectionPage.xaml" NavigationUIVisibility="Hidden" />
+    <controls:TransitioningContentControl x:Name="frame" Transition="LeftReplace" >
+        <pages:EventSelectionPage  />
+    </controls:TransitioningContentControl>
+        <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <StackPanel Orientation="Vertical" Name="windowCommands"></StackPanel>
+            </controls:WindowCommands>
+        </controls:MetroWindow.RightWindowCommands>
 </controls:MetroWindow>

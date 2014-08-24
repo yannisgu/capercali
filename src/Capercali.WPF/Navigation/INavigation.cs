@@ -3,6 +3,5 @@
     public interface INavigation
     {
         void Open<T>();
-        void GoBack();
     }
 }

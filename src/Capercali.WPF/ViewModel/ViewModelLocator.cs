@@ -57,6 +57,11 @@ namespace Capercali.WPF.ViewModel
             get { return ServiceLocator.Current.GetInstance<IEventPageViewModel>(); }
         }
 
+        public IEventWindowCommands EventWindowCommands
+        {
+            get { return ServiceLocator.Current.GetInstance<IEventWindowCommands>(); }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

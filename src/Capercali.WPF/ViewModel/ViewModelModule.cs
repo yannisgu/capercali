@@ -10,6 +10,7 @@ namespace Capercali.WPF.ViewModel
             Bind<IMainViewModel>().To<MainViewModel>().InSingletonScope();
             Bind<INavigation>().To<Navigation.Navigation>();
             Bind<IEventPageViewModel>().To<EventPageViewModel>();
+            Bind<IEventWindowCommands>().To<EventWindowCommands>();
         }
     }
 }

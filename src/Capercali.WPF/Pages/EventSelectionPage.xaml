@@ -1,4 +1,4 @@
-﻿<Page x:Class="Capercali.WPF.Pages.EventSelectionPage"
+﻿<UserControl x:Class="Capercali.WPF.Pages.EventSelectionPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -24,8 +24,9 @@
         </StackPanel>
 
     </Grid>
-    <Page.InputBindings>
+    
+    <UserControl.InputBindings>
         <KeyBinding Key="N" Modifiers="Control" Command="{Binding NewEvent}" />
         <KeyBinding Key="O" Modifiers="Control" Command="{Binding OpenEvent}" />
-    </Page.InputBindings>
-</Page>
+    </UserControl.InputBindings>
+</UserControl>

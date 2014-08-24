@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using MahApps.Metro.Controls;
 
 namespace Capercali.WPF
 {
@@ -12,9 +13,14 @@ namespace Capercali.WPF
             InitializeComponent();
         }
 
-        public Frame Frame
+        public TransitioningContentControl Frame
         {
             get { return frame; }
+        }
+
+        public StackPanel WindowCommandsPanel
+        {
+            get { return windowCommands; }
         }
     }
 }
