@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ReactiveUI;
 
 namespace Capercali.WPF
 {
@@ -7,5 +8,10 @@ namespace Capercali.WPF
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            
+            
+        }
     }
 }

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       d:DesignHeight="500" d:DesignWidth="500"
-      DataContext="{Binding Main, Source={StaticResource Locator}}">
+      >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -19,7 +19,7 @@
         </DataGrid>
         <StackPanel Grid.Column="1" Margin="35,35,35,0">
             <Button Content="create new event (Ctrl+N)" VerticalAlignment="Top" />
-            <Button Content="open selected event (Ctrl+O)" Margin="0,15,0,0" IsEnabled="{Binding IsEventSelected}"
+            <Button Content="open selected event (Ctrl+O)" Margin="0,15,0,0" 
                     Command="{Binding OpenEvent}" VerticalAlignment="Top" />
         </StackPanel>
 

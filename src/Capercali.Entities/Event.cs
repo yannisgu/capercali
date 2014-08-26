@@ -9,19 +9,13 @@ namespace Capercali.Entities
     {
         public Event()
         {
-            Courses = new List<Course>();
         }
 
         public string Name { get; set; }
 
-        [OID] private long id;
+        
 
-        public long Id
-        {
-            get { return id; }
-        }
-
-        public List<Course> Courses { get; set; } 
+        public long Id { get; set; }
 
         public TimeSpan ZeroTime { get; set; }
     }

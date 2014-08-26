@@ -2,60 +2,46 @@ using System;
 using System.Collections.Generic;
 using Capercali.DataAccess.Services;
 using Capercali.Entities;
-using Capercali.WPF.Navigation;
 using Capercali.WPF.Pages;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using ReactiveUI;
 
 namespace Capercali.WPF.ViewModel
 {
-    /// <summary>
-    ///     This class contains properties that the main View can data bind to.
-    ///     <para>
-    ///         Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    ///     </para>
-    ///     <para>
-    ///         You can also use Blend to data bind with the tool's support.
-    ///     </para>
-    ///     <para>
-    ///         See http://www.galasoft.ch/mvvm
-    ///     </para>
-    /// </summary>
-    public class MainViewModel : ViewModelBase, IMainViewModel
+    public class MainViewModel : ReactiveObject, IMainViewModel
     {
         private readonly IEventsService eventsService;
-        private readonly INavigation navigation;
         private IEnumerable<Event> events;
-        private RelayCommand openEvent;
         private Event selectedEvent;
 
         /// <summary>
         ///     Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IEventsService eventsService, INavigation navigation)
+        public MainViewModel(IEventsService eventsService, IScreen screen)
         {
+            HostScreen = screen;
             this.eventsService = eventsService;
-            this.navigation = navigation;
-
+            var openEventVisible =  this.WhenAny(x => x.SelectedEvent, e => e.Value != null);
+            OpenEvent = new ReactiveCommand(openEventVisible);
+            OpenEvent.Subscribe(DoOpenEvent);
+            NewEvent = new ReactiveCommand();
             Load();
         }
 
-        private RelayCommand newEvent;
-
-        public RelayCommand OpenEvent
+        private void DoOpenEvent(object obj)
         {
-            get { return openEvent ?? (openEvent = new RelayCommand(DoOpenEvent)); }
+            HostScreen.Router.Navigate.Execute(RxApp.DependencyResolver.GetService(typeof(IEventPageViewModel)));
         }
 
-        public RelayCommand NewEvent
-        {
-            get { return newEvent ?? (newEvent = new RelayCommand(DoNewEvent)); }
-        }
+
+        public ReactiveCommand NewEvent { get; protected set; }
+
+        public ReactiveCommand OpenEvent { get; protected set; }
+
 
         public IEnumerable<Event> Events
         {
             get { return events; }
-            set { Set(() => Events, ref events, value); }
+            set { this.RaiseAndSetIfChanged(ref events, value); }
         }
 
         public bool IsEventSelected
@@ -66,27 +52,18 @@ namespace Capercali.WPF.ViewModel
         public Event SelectedEvent
         {
             get { return selectedEvent; }
-            set
-            {
-                Set(() => SelectedEvent, ref selectedEvent, value);
-                base.RaisePropertyChanged(() => IsEventSelected);
-            }
+            set { this.RaiseAndSetIfChanged(ref selectedEvent, value); }
         }
 
-        private void DoNewEvent()
-        {
-            throw new NotImplementedException();
-        }
 
-        private void DoOpenEvent()
-        {
-            navigation.Open<EventPage>();
-        }
 
         private async void Load()
         {
             await eventsService.UpdateEvent(new Event() {Name = "Test1"});
             Events = await eventsService.GetAll();
         }
+
+        public string UrlPathSegment { get { return "main"; } }
+        public IScreen HostScreen { get; private set; }
     }
 }

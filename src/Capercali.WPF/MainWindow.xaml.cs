@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using Capercali.WPF.ViewModel;
 using MahApps.Metro.Controls;
 
 namespace Capercali.WPF
@@ -8,14 +9,12 @@ namespace Capercali.WPF
     /// </summary>
     public partial class MainWindow
     {
+        public AppBootstrapper AppBootstrapper { get; protected set; }
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        public TransitioningContentControl Frame
-        {
-            get { return frame; }
+            AppBootstrapper = new AppBootstrapper();
+            DataContext = AppBootstrapper;
         }
 
         public StackPanel WindowCommandsPanel

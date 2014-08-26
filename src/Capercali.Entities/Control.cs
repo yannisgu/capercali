@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Capercali.Entities
 {
-    public class Course
+    public class Control
     {
         public long Id { get; set; }
-        public string Name { get; set; }
-
+        public int Number { get; set; }
+        public string ControlNumber { get; set; }
     }
 }

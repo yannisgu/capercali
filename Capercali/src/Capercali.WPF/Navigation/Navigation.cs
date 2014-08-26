@@ -2,21 +2,31 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using MahApps.Metro.Controls;
 
 namespace Capercali.WPF.Navigation
 {
     internal class Navigation : INavigation
     {
-        private TransitioningContentControl _mainFrame;
+        private Frame _mainFrame;
 
 
+        public event NavigatingCancelEventHandler Navigating;
+
+
+        public void GoBack()
+        {
+            if (EnsureMainFrame()
+                && _mainFrame.CanGoBack)
+            {
+                _mainFrame.GoBack();
+            }
+        }
 
         public void Open<T>()
         {
             if (EnsureMainFrame())
             {
-                _mainFrame.Content = typeof (T).GetConstructor(new Type[] {}).Invoke(new object[] {});
+                _mainFrame.Navigate(typeof (T).GetConstructor(new Type[] {}).Invoke(new object[] {}));
             }
         }
 
@@ -34,7 +44,13 @@ namespace Capercali.WPF.Navigation
             if (_mainFrame != null)
             {
                 // Could be null if the app runs inside a design tool
-               
+                _mainFrame.Navigating += (s, e) =>
+                {
+                    if (Navigating != null)
+                    {
+                        Navigating(s, e);
+                    }
+                };
 
                 return true;
             }

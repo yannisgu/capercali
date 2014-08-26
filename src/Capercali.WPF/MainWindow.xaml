@@ -3,11 +3,11 @@
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:pages="clr-namespace:Capercali.WPF.Pages"
+                      xmlns:xaml="clr-namespace:ReactiveUI.Xaml;assembly=ReactiveUI.Xaml"
                       Title="Capercali">
-    <controls:TransitioningContentControl x:Name="frame" Transition="LeftReplace" >
-        <pages:EventSelectionPage  />
-    </controls:TransitioningContentControl>
-        <controls:MetroWindow.RightWindowCommands>
+    
+    <xaml:RoutedViewHost Router="{Binding Router}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+    <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <StackPanel Orientation="Vertical" Name="windowCommands"></StackPanel>
             </controls:WindowCommands>
