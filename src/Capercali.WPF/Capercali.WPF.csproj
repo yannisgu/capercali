@@ -107,6 +107,8 @@
       <DependentUpon>EventWindowCommands.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AppBootstrapper.cs" />
+    <Compile Include="ViewModel\ControlViewModel.cs" />
+    <Compile Include="ViewModel\CourseViewModel.cs" />
     <Compile Include="ViewModel\EventPageViewModel.cs" />
     <Compile Include="ViewModel\EventWindowCommands.cs" />
     <Compile Include="ViewModel\IEventPageViewModel.cs" />

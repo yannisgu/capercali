@@ -33,6 +33,10 @@ namespace Capercali.WPF.ViewModel
                     Event.ZeroTime = EventZeroTime;
                     await eventsService.UpdateEvent(Event);
                 });
+
+            this.ObservableForProperty(x => x.SelectedCourse).
+                Select(x => new ReactiveList<ControlViewModel>()).
+                ToProperty(this, model => model.Controls);
         }
 
         public Event Event { get; private set; }
@@ -56,63 +60,32 @@ namespace Capercali.WPF.ViewModel
         }
 
         private ObservableCollection<Course> courses;
-        private Course selectedCourse;
+        private CourseViewModel selectedCourse;
         private TimeSpan eventZeroTime;
 
-        public ObservableCollection<Course> Courses
-        {
-            get
-            {
-                if (courses == null)
-                {
-                    //courses = new ObservableCollection<Course>(Event.Courses ?? new List<Course>());
-                    //courses.CollectionChanged += (s, e) =>
-                    //{
-                    //    Event.Courses = courses;
-                    //};
+        public ReactiveList<CourseViewModel> Courses { get; protected set; }
 
-                }
-                return courses;
-            }
-            set
-            {
-                
-            }
-        }
-
-        public Course SelectedCourse
+        public CourseViewModel SelectedCourse
         {
             get { return selectedCourse; }
             set
             {
-                //Set(() => SelectedCourse, ref selectedCourse, value);
-                //RaisePropertyChanged(() => Controls);
+                this.RaiseAndSetIfChanged(ref selectedCourse, value);
             }
         }
 
-        public ObservableCollection<Control> Controls
-        {
-            get
-            {
-                ObservableCollection<Control> controls = null;
-                if (SelectedCourse != null)
-                {
-                    //controls = new ObservableCollection<Control>(SelectedCourse.Controls ?? new List<Control>());
-                    //controls.CollectionChanged += (s, e) =>
-                    //{
-                    //    int i = 1;
-                    //    foreach (var control in controls)
-                    //    {
-                    //        control.Number = i++;
-                    //    }
-                    //    SelectedCourse.Controls = controls;
-                    //    eventsService.UpdateEvent(Event);
-                    //};
-                }
-                return controls; 
-            
-            }
-        }
+        public ReactiveList<ControlViewModel> Controls { get; protected set; }
+        //controls = new ObservableCollection<Control>(SelectedCourse.Controls ?? new List<Control>());
+        //controls.CollectionChanged += (s, e) =>
+        //{
+        //    int i = 1;
+        //    foreach (var control in controls)
+        //    {
+        //        control.Number = i++;
+        //    }
+        //    SelectedCourse.Controls = controls;
+        //    eventsService.UpdateEvent(Event);
+        //};
 
         public string UrlPathSegment { get { return "eventDetail"; }}
         public IScreen HostScreen { get; private set; }

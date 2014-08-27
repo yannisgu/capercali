@@ -12,8 +12,8 @@ namespace Capercali.WPF.ViewModel
         Event Event { get; }
         string EventName { get; set; }
         TimeSpan EventZeroTime { get; }
-        ObservableCollection<Course> Courses { get; set; }
-        Course SelectedCourse { get; set; }
-        ObservableCollection<Control> Controls { get; }
+        ReactiveList<CourseViewModel > Courses { get; }
+        CourseViewModel SelectedCourse { get; set; }
+        ReactiveList<ControlViewModel> Controls { get; }
     }
 }

@@ -10,6 +10,6 @@ namespace Capercali.Entities
     {
         public long Id { get; set; }
         public string Name { get; set; }
-
+        public IEnumerable<Control> Controls { get; set; }
     }
 }
