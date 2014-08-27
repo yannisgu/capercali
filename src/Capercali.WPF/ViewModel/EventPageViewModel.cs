@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Reactive.Linq;
 using Capercali.DataAccess.Services;
@@ -25,6 +26,7 @@ namespace Capercali.WPF.ViewModel
             Event = mainViewModel.SelectedEvent;
             EventName = Event.Name;
             EventZeroTime = Event.ZeroTime;
+            Courses = new ReactiveList<CourseViewModel>();
             this.ObservableForProperty(x => x.EventName)
                 .Merge<object>(this.ObservableForProperty(x => x.EventZeroTime))
                 .Subscribe(async x =>
@@ -33,10 +35,15 @@ namespace Capercali.WPF.ViewModel
                     Event.ZeroTime = EventZeroTime;
                     await eventsService.UpdateEvent(Event);
                 });
-
             this.ObservableForProperty(x => x.SelectedCourse).
-                Select(x => new ReactiveList<ControlViewModel>()).
-                ToProperty(this, model => model.Controls);
+                Select(x =>
+                {
+
+                    var val = x.Value != null ? x.Value.Controls : null;
+                    Debug.WriteLine(val);
+                    return val;
+                }).
+                ToProperty(this, model => model.Controls, out controls);
         }
 
         public Event Event { get; private set; }
@@ -59,11 +66,15 @@ namespace Capercali.WPF.ViewModel
             set { this.RaiseAndSetIfChanged(ref eventZeroTime, value); }
         }
 
-        private ObservableCollection<Course> courses;
         private CourseViewModel selectedCourse;
         private TimeSpan eventZeroTime;
+        private ReactiveList<CourseViewModel> courses;
 
-        public ReactiveList<CourseViewModel> Courses { get; protected set; }
+        public ReactiveList<CourseViewModel> Courses
+        {
+            get { return courses; }
+            protected set { this.RaiseAndSetIfChanged(ref courses, value); }
+        }
 
         public CourseViewModel SelectedCourse
         {
@@ -74,7 +85,9 @@ namespace Capercali.WPF.ViewModel
             }
         }
 
-        public ReactiveList<ControlViewModel> Controls { get; protected set; }
+        ObservableAsPropertyHelper<ReactiveList<ControlViewModel>> controls;
+
+        public ReactiveList<ControlViewModel> Controls { get { return controls.Value; } }
         //controls = new ObservableCollection<Control>(SelectedCourse.Controls ?? new List<Control>());
         //controls.CollectionChanged += (s, e) =>
         //{

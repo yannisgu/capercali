@@ -33,7 +33,7 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
-                                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse}" CanUserAddRows="True" Grid.Column="1">
+                                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse, Converter={StaticResource ignoreNewItemPlaceHolderConverter}, Mode=OneWayToSource}" CanUserAddRows="True" Grid.Column="1" SelectionMode="Single" >
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="name" Binding="{Binding Name}"></DataGridTextColumn>
                                     </DataGrid.Columns>

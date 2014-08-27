@@ -1,29 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Capercali.Entities;
 
 namespace Capercali.DataAccess.Services
 {
-    public interface IEventConfigurationSerivce
+    interface IEventConfigurationSerivce
     {
-        Task LoadCourses(Event @event);
-        Task UpdateCourses(Event @event);
-        event CoursesChangedDelegate CoursesChanged;
-    }
+        Task<IEnumerable<Course>> GetCourses(long eventId);
+        Task UpdateCourse(long eventId, Course course);
 
-    public delegate void CoursesChangedDelegate(object sender, CoursesChangedArgs args);
 
-    public class CoursesChangedArgs : EventArgs
-    {
-        public CoursesChangedArgs(IEnumerable<Course> courses, Event @event)
-        {
-            Event = @event;
-            Courses = courses;
-        }
-
-        public IEnumerable<Course> Courses { get; private set; }
-        public Event Event { get; private set; }
     }
 }

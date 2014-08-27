@@ -92,6 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\IgnoreNewItemPlaceholderConverter.cs" />
     <Compile Include="Pages\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>

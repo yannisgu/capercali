@@ -15,7 +15,7 @@ namespace Capercali.DataAccess.SimpleStore
     {
         public async Task<IEnumerable<Event>> GetAll()
         {
-           return await BlobCache.LocalMachine.GetObject<IEnumerable<Event>>("events").Catch(Observable.Return(new List<Event>()) );
+           return await Cache.GetObject<IEnumerable<Event>>("events").Catch(Observable.Return(new List<Event>()) );
             
         }
 
@@ -33,7 +33,7 @@ namespace Capercali.DataAccess.SimpleStore
                 @event.Id = lastOrDefault != null ? lastOrDefault.Id + 1 : 1;
                 events.Add(@event);
             }
-            await BlobCache.LocalMachine.InsertObject("events", events);
+            await Cache.InsertObject("events", events);
         }
     }
 }
