@@ -17,6 +17,11 @@ namespace Capercali.WPF.ViewModel
             Id = course.Id;
             Name = course.Name;
             Controls = new ReactiveList<ControlViewModel>(course.Controls.Select(c => new ControlViewModel(c)));
+            Controls.ChangeTrackingEnabled = true;
+            foreach (var control in Controls)
+            {
+                control.Course = this;
+            }
             Init();
         }
 

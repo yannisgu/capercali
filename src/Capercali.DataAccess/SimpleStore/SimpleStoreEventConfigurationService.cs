@@ -23,10 +23,10 @@ namespace Capercali.DataAccess.SimpleStore
         public async Task UpdateCourse(long eventId, Course course)
         {
             var courses = (await GetCourses(eventId)).ToList();
-            if (courses.Any(c => c.Id == course.Id))
+            var index = (courses.FindIndex(c => c.Id == course.Id));
+            if (index >= 0)
             {
-                courses.RemoveAll(e => e.Id == course.Id);
-                courses.Add(course);
+                courses[index] = course;
             }
             else
             {

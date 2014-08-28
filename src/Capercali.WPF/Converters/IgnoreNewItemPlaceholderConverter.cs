@@ -18,10 +18,20 @@ namespace Capercali.WPF.Converters
             return value;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
         {
             if (value != null && value.ToString() == newItemPlaceholderName)
-                value = null;
+            {
+                if (targetType.IsValueType)
+                {
+                    value = Activator.CreateInstance(targetType);
+                }
+                else
+                {
+                    value = null;
+                }
+            }
             return value;
         }
     }
