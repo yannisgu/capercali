@@ -7,7 +7,7 @@ using Capercali.Entities;
 
 namespace Capercali.DataAccess.Services
 {
-    interface IEventConfigurationSerivce
+   public  interface IEventConfigurationService
     {
         Task<IEnumerable<Course>> GetCourses(long eventId);
         Task UpdateCourse(long eventId, Course course);

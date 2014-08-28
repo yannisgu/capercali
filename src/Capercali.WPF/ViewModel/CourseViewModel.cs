@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Documents;
 using Capercali.Entities;
 using Ninject.Activation.Strategies;
 using ReactiveUI;
@@ -13,6 +14,7 @@ namespace Capercali.WPF.ViewModel
     {
         public CourseViewModel(Course course)
         {
+            Id = course.Id;
             Name = course.Name;
             Controls = new ReactiveList<ControlViewModel>(course.Controls.Select(c => new ControlViewModel(c)));
             Init();
@@ -43,5 +45,16 @@ namespace Capercali.WPF.ViewModel
             set {this.RaiseAndSetIfChanged(ref name, value); }
         }
 
+        public long Id { get; set; }
+
+        public Course ToCourse()
+        {
+            return new Course()
+            {
+                Id=Id,
+                Name=Name,
+                Controls = Controls.Select(_ => _.ToModel())
+            };
+        }
     }
 }

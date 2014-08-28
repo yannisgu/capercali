@@ -8,6 +8,7 @@ namespace Capercali.DataAccess.SimpleStore
         public override void Load()
         {
             Bind<IEventsService>().To<SimpleStoreEventsService>().InSingletonScope();
+            Bind<IEventConfigurationService>().To<SimpleStoreEventConfigurationService>().InSingletonScope();
             
          }
     }

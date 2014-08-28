@@ -84,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
-    <Compile Include="Services\IEventConfigurationSerivce.cs" />
+    <Compile Include="Services\IEventConfigurationService.cs" />
     <Compile Include="SimpleStore\SimpleStoreBaseService.cs" />
     <Compile Include="SimpleStore\SimpleStoreEventConfigurationService.cs" />
     <Compile Include="SimpleStore\SimpleStoreEventsService.cs" />
