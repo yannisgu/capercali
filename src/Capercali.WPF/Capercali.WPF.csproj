@@ -104,14 +104,19 @@
     <Compile Include="UserControls\EditRow.xaml.cs">
       <DependentUpon>EditRow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\EventConfiguration.xaml.cs">
+      <DependentUpon>EventConfiguration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EventWindowCommands.xaml.cs">
       <DependentUpon>EventWindowCommands.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AppBootstrapper.cs" />
     <Compile Include="ViewModel\ControlViewModel.cs" />
     <Compile Include="ViewModel\CourseViewModel.cs" />
+    <Compile Include="ViewModel\EventConfigurationViewModel.cs" />
     <Compile Include="ViewModel\EventPageViewModel.cs" />
     <Compile Include="ViewModel\EventWindowCommands.cs" />
+    <Compile Include="ViewModel\IEventConfigurationViewModel.cs" />
     <Compile Include="ViewModel\IEventPageViewModel.cs" />
     <Compile Include="ViewModel\IEventWindowCommands.cs" />
     <Compile Include="ViewModel\IMainViewModel.cs" />
@@ -142,6 +147,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\EditRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EventConfiguration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

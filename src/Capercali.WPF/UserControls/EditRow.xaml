@@ -7,7 +7,7 @@
              x:Name="UserControl">
     <Grid>
         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-            <TextBlock Text="{Binding Label, ElementName=UserControl}" Margin="5,5,10,0"  />
+            <TextBlock Text="{Binding Label, ElementName=UserControl}" Margin="5,5,10,0" Width="100px"  />
             <TextBox  Text="{Binding Value, ElementName=UserControl, Mode=TwoWay}" Width="100px" />
         </StackPanel>
     </Grid>

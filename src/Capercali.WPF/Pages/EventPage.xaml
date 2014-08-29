@@ -13,63 +13,7 @@
 
 
             <TabItem Header="configuration">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TabControl FontWeight="Bold" >
-                        <TabItem Header="general">
-                            <StackPanel Orientation="Vertical" >
-                                <userControls:EditRow Label="Name" Value="{Binding EventName}" />
-                                <userControls:EditRow Label="Zero hour" Value="{Binding EventZeroTime}" />
-                            </StackPanel>
-                        </TabItem>
-                        <TabItem Header="course">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="30"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="30"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse, Converter={StaticResource ignoreNewItemPlaceHolderConverter}, Mode=OneWayToSource}" CanUserAddRows="True" Grid.Column="1" SelectionMode="Single" >
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="name" Binding="{Binding Name}"></DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                                <DataGrid AutoGenerateColumns="False" Grid.Column="3" ItemsSource="{Binding Controls}" SelectedIndex="{Binding SelectedControlIndex, Mode=OneWayToSource}">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn IsReadOnly="True" Header="Num" Binding="{Binding Number}"></DataGridTextColumn>
-                                        <DataGridTextColumn IsReadOnly="False" Header="Code" Binding="{Binding ControlNumber}"></DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                                
-                                <StackPanel Grid.Column="5">
-                                    <Button  Style="{DynamicResource MetroCircleButtonStyle}" Height="40" Width="40" Command="{Binding ControlUp}">
-                                        <Rectangle Height="20" Width="20" >
-                                            <Rectangle.Fill>
-                                                <VisualBrush Visual="{StaticResource appbar_arrow_up}"  />
-                                            </Rectangle.Fill>
-                                        </Rectangle>
-                                        
-                                    </Button>
-                                    <Button  Style="{DynamicResource MetroCircleButtonStyle}" Height="40" Width="40" Command="{Binding ControlDown}">
-                                        <Rectangle Height="20" Width="20">
-                                            <Rectangle.Fill>
-                                                <VisualBrush Visual="{StaticResource appbar_arrow_down}" />
-                                            </Rectangle.Fill>
-                                        </Rectangle>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-
-                        </TabItem>
-                    </TabControl>
-
-                </Grid>
+                <userControls:EventConfiguration DataContext="{Binding EventConfiguration}"></userControls:EventConfiguration>
             </TabItem>
             <TabItem Header="runners"></TabItem>
         </TabControl>

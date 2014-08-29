@@ -10,6 +10,6 @@
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <StackPanel Orientation="Vertical" Name="windowCommands"></StackPanel>
-            </controls:WindowCommands>
-        </controls:MetroWindow.RightWindowCommands>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
 </controls:MetroWindow>

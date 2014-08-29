@@ -5,15 +5,9 @@ using NDatabase.Api;
 
 namespace Capercali.Entities
 {
-    public class Event
+    public class Event : IEntity
     {
-        public Event()
-        {
-        }
-
         public string Name { get; set; }
-
-        
 
         public long Id { get; set; }
 

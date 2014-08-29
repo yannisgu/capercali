@@ -55,11 +55,8 @@ namespace Capercali.WPF.ViewModel
             set { this.RaiseAndSetIfChanged(ref selectedEvent, value); }
         }
 
-
-
         private async void Load()
         {
-            await eventsService.UpdateEvent(new Event() {Name = "Test1"});
             Events = await eventsService.GetAll();
         }
 

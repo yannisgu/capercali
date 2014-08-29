@@ -10,15 +10,6 @@ namespace Capercali.WPF.ViewModel
 {
     public interface IEventPageViewModel : IRoutableViewModel
     {
-        Event Event { get; }
-        string EventName { get; set; }
-        TimeSpan EventZeroTime { get; }
-        ReactiveList<CourseViewModel > Courses { get; }
-        CourseViewModel SelectedCourse { get; set; }
-        ReactiveList<ControlViewModel> Controls { get; }
-
-        int SelectedControlIndex { set; get; }
-        ReactiveCommand ControlUp { get; }
-        ReactiveCommand ControlDown { get;}
+        IEventConfigurationViewModel EventConfiguration { get; } 
     }
 }

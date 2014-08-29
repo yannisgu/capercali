@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Capercali.Entities
 {
-    public class Course
-    {
+    public class Course :IEntity
+    { 
         public long Id { get; set; }
         public string Name { get; set; }
         public IEnumerable<Control> Controls { get; set; }

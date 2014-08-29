@@ -19,7 +19,6 @@ namespace Capercali.WPF.ViewModel
             var ports = new Dictionary<string, string>();
             foreach (var item in searcher.Get())
             {
-
                 ports[item["DeviceID"].ToString()] = item["Caption"].ToString();
             }
 

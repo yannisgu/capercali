@@ -22,19 +22,8 @@ namespace Capercali.DataAccess.SimpleStore
 
         public async Task UpdateCourse(long eventId, Course course)
         {
-            var courses = (await GetCourses(eventId)).ToList();
-            var index = (courses.FindIndex(c => c.Id == course.Id));
-            if (index >= 0)
-            {
-                courses[index] = course;
-            }
-            else
-            {
-                var lastOrDefault = courses.OrderBy(e => e.Id).LastOrDefault();
-                course.Id = lastOrDefault != null ? lastOrDefault.Id + 1 : 1;
-                courses.Add(course);
-            }
-            await Cache.InsertObject("courses-" + eventId, courses);
+            await UpdateItem("courses-" + eventId, (await GetCourses(eventId)).ToList(), course);
         }
+
     }
 }
