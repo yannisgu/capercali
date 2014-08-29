@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Capercali.WPF.UserControls;
 using Capercali.WPF.ViewModel;
+using Capercali.WPF.ViewModel.Main;
 using ReactiveUI;
 
 namespace Capercali.WPF.Pages

@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using Capercali.DataAccess.Services;
 using Capercali.Entities;
-using Capercali.WPF.Pages;
+using Capercali.WPF.ViewModel.EventPage;
 using ReactiveUI;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.ViewModel.Main
 {
     public class MainViewModel : ReactiveObject, IMainViewModel
     {
         private readonly IEventsService eventsService;
-        private IEnumerable<Event> events;
+        private ReactiveList<Event> events;
         private Event selectedEvent;
 
         /// <summary>
@@ -21,11 +21,22 @@ namespace Capercali.WPF.ViewModel
             HostScreen = screen;
             this.eventsService = eventsService;
             var openEventVisible =  this.WhenAny(x => x.SelectedEvent, e => e.Value != null);
-            OpenEvent = new ReactiveCommand(openEventVisible);
+            OpenEvent = new ReactiveCommand(openEventVisible, initialCondition:false);
             OpenEvent.Subscribe(DoOpenEvent);
             NewEvent = new ReactiveCommand();
+            NewEvent.Subscribe(x =>
+            {
+                this.SelectedEvent = new Event();
+                HostScreen.Router.Navigate.Execute(RxApp.DependencyResolver.GetService(typeof(IEventPageViewModel)));
+            });
+            DeleteEvent = new ReactiveCommand(openEventVisible, initialCondition: false);
+            DeleteEvent
+                .Subscribe(async _ => await eventsService.DeleteEvent(SelectedEvent));
+            DeleteEvent.Subscribe(_ => Events.Remove(SelectedEvent));
             Load();
         }
+
+        public ReactiveCommand DeleteEvent { get; private set; }
 
         private void DoOpenEvent(object obj)
         {
@@ -34,11 +45,12 @@ namespace Capercali.WPF.ViewModel
 
 
         public ReactiveCommand NewEvent { get; protected set; }
+        public ReactiveCommand DeleteeEvent { get; private set; }
 
         public ReactiveCommand OpenEvent { get; protected set; }
 
 
-        public IEnumerable<Event> Events
+        public ReactiveList<Event> Events
         {
             get { return events; }
             set { this.RaiseAndSetIfChanged(ref events, value); }
@@ -57,7 +69,7 @@ namespace Capercali.WPF.ViewModel
 
         private async void Load()
         {
-            Events = await eventsService.GetAll();
+            Events = new ReactiveList<Event>(await eventsService.GetAll());
         }
 
         public string UrlPathSegment { get { return "main"; } }

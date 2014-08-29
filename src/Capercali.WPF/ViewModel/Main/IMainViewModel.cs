@@ -2,14 +2,15 @@
 using Capercali.Entities;
 using ReactiveUI;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.ViewModel.Main
 {
     public interface IMainViewModel : IRoutableViewModel
     {
-        IEnumerable<Event> Events { get; set; }
+        ReactiveList<Event> Events { get; set; }
         bool IsEventSelected { get; }
         Event SelectedEvent { get; set; }
         ReactiveCommand OpenEvent { get; }
         ReactiveCommand NewEvent { get; }
+        ReactiveCommand DeleteeEvent { get; }
     }
 }

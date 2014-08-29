@@ -49,5 +49,17 @@ namespace Capercali.DataAccess.SimpleStore
             }
             await Cache.InsertObject(key, list);
         }
+
+
+        protected async Task DeleteItem<T>(string key, List<T> list, T item) where T : IEntity
+        {
+            var index = (list.FindIndex(c => c.Id == item.Id));
+            if (index >= 0)
+            {
+                list.RemoveAt(index);
+            }
+            await Cache.InsertObject(key, list);
+        }
+ 
     }
 }

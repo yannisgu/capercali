@@ -1,7 +1,7 @@
 ﻿using Capercali.DataAccess.Services;
 using Ninject.Modules;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.DesignTimeServices
 {
     public class DesignTimeDataModule : NinjectModule
     {

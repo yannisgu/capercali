@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Capercali.DataAccess.Services;
 using Capercali.Entities;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.DesignTimeServices
 {
     internal class DesignTimeEventService : IEventsService
     {
@@ -21,6 +21,12 @@ namespace Capercali.WPF.ViewModel
         public Task UpdateEvent(Event @event)
         {
             return new Task(() => { });
+        }
+
+        public Task DeleteEvent(Event @event)
+        {
+            return new Task(() => { });
+
         }
     }
 }

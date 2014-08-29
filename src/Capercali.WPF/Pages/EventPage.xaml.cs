@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Capercali.WPF.ViewModel;
+using Capercali.WPF.ViewModel.EventPage;
 using ReactiveUI;
 using EventWindowCommands = Capercali.WPF.UserControls.EventWindowCommands;
 

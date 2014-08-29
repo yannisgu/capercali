@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Security.Cryptography.X509Certificates;
-using Capercali.Entities;
+using Capercali.WPF.ViewModel.EventConfiguration;
 using ReactiveUI;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.ViewModel.EventPage
 {
     public interface IEventPageViewModel : IRoutableViewModel
     {

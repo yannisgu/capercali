@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Capercali.DataAccess.SimpleStore;
 using Capercali.WPF.Pages;
+using Capercali.WPF.ViewModel.EventPage;
+using Capercali.WPF.ViewModel.Main;
 using Ninject;
 using ReactiveUI;
 
@@ -35,7 +37,7 @@ namespace Capercali.WPF.ViewModel
         private void RegisterParts(IMutableDependencyResolver dependencyResolver)
         {
             dependencyResolver.RegisterConstant(this, typeof(IScreen));
-            dependencyResolver.Register(() => new EventPage(), typeof(IViewFor<EventPageViewModel>));
+            dependencyResolver.Register(() => new Pages.EventPage(), typeof(IViewFor<EventPageViewModel>));
             dependencyResolver.Register(() => new EventSelectionPage(), typeof(IViewFor<MainViewModel>));
         }
     }

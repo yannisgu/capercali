@@ -93,6 +93,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\IgnoreNewItemPlaceholderConverter.cs" />
+    <Compile Include="Extensions\ReactiveListExtensions.cs" />
     <Compile Include="Pages\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>
@@ -113,14 +114,14 @@
     <Compile Include="ViewModel\AppBootstrapper.cs" />
     <Compile Include="ViewModel\ControlViewModel.cs" />
     <Compile Include="ViewModel\CourseViewModel.cs" />
-    <Compile Include="ViewModel\EventConfigurationViewModel.cs" />
-    <Compile Include="ViewModel\EventPageViewModel.cs" />
-    <Compile Include="ViewModel\EventWindowCommands.cs" />
-    <Compile Include="ViewModel\IEventConfigurationViewModel.cs" />
-    <Compile Include="ViewModel\IEventPageViewModel.cs" />
-    <Compile Include="ViewModel\IEventWindowCommands.cs" />
-    <Compile Include="ViewModel\IMainViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\EventConfiguration\EventConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\EventPage\EventPageViewModel.cs" />
+    <Compile Include="ViewModel\EventWindowCommands\EventWindowCommands.cs" />
+    <Compile Include="ViewModel\EventConfiguration\IEventConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\EventPage\IEventPageViewModel.cs" />
+    <Compile Include="ViewModel\EventWindowCommands\IEventWindowCommands.cs" />
+    <Compile Include="ViewModel\Main\IMainViewModel.cs" />
+    <Compile Include="ViewModel\Main\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelModule.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

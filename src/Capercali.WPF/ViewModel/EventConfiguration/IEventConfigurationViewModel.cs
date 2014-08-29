@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Capercali.Entities;
 using ReactiveUI;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.ViewModel.EventConfiguration
 {
     public interface IEventConfigurationViewModel
     {

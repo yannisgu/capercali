@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.ViewModel.EventWindowCommands
 {
     public interface IEventWindowCommands
 

@@ -1,17 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reactive.Linq;
-using System.Reactive.Subjects;
-using Capercali.DataAccess.Services;
-using Capercali.Entities;
+using Capercali.WPF.ViewModel.EventConfiguration;
 using ReactiveUI;
 
-namespace Capercali.WPF.ViewModel
+namespace Capercali.WPF.ViewModel.EventPage
 {
     internal class EventPageViewModel : ReactiveObject, IEventPageViewModel
     {

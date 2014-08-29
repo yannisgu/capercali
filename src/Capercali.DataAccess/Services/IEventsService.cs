@@ -8,5 +8,6 @@ namespace Capercali.DataAccess.Services
     {
         Task<IEnumerable<Event>> GetAll();
         Task UpdateEvent(Event @event);
+        Task DeleteEvent(Event @event);
     }
 }

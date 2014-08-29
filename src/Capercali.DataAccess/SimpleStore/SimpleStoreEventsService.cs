@@ -22,5 +22,10 @@ namespace Capercali.DataAccess.SimpleStore
         {
             await UpdateItem("events", (await GetAll()).ToList(), @event);
         }
-    }
+
+        public async Task DeleteEvent(Event @event)
+        {
+            await DeleteItem("events", (await GetAll()).ToList(), @event);
+        }
+   }
 }

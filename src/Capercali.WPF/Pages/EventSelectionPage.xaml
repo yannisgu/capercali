@@ -11,22 +11,29 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="250" />
         </Grid.ColumnDefinitions>
-        <DataGrid ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent}" AutoGenerateColumns="False"
+        <DataGrid ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent, Mode=OneWayToSource}" AutoGenerateColumns="False"
                   IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Binding="{Binding Name}" Header="Name" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Margin="35,35,35,0">
-            <Button Content="create new event (Ctrl+N)" VerticalAlignment="Top" />
+            <Button Content="create new event (Ctrl+N)" Command="{Binding NewEvent}" VerticalAlignment="Top" />
             <Button Content="open selected event (Ctrl+O)" Margin="0,15,0,0" 
-                    Command="{Binding OpenEvent}" VerticalAlignment="Top" />
+                    Command="{Binding DeleteEvent}" VerticalAlignment="Top" />
+            
+        </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="35,35,35,35">
+            <Button Content="delete selected event (del)" Margin="0,0,0,0" 
+            	Command="{Binding DeleteEvent}"  VerticalAlignment="Bottom"  />
         </StackPanel>
 
     </Grid>
-    
+
     <UserControl.InputBindings>
         <KeyBinding Key="N" Modifiers="Control" Command="{Binding NewEvent}" />
         <KeyBinding Key="O" Modifiers="Control" Command="{Binding OpenEvent}" />
+
+        <KeyBinding Key="Delete"  Command="{Binding DeleteEvent}" />
     </UserControl.InputBindings>
 </UserControl>
