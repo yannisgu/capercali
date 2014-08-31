@@ -11,6 +11,6 @@ namespace Capercali.WPF.ViewModel.Main
         Event SelectedEvent { get; set; }
         ReactiveCommand OpenEvent { get; }
         ReactiveCommand NewEvent { get; }
-        ReactiveCommand DeleteeEvent { get; }
+        ReactiveCommand DeleteEvent { get; }
     }
 }

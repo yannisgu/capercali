@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Windows.Media.Animation;
 using Capercali.DataAccess.Services;
 using Capercali.Entities;
 using Capercali.WPF.ViewModel.EventPage;
@@ -16,7 +19,7 @@ namespace Capercali.WPF.ViewModel.Main
         /// <summary>
         ///     Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IEventsService eventsService, IScreen screen)
+        public MainViewModel(IEventsService eventsService, IAppBootstrapper screen)
         {
             HostScreen = screen;
             this.eventsService = eventsService;
@@ -29,10 +32,20 @@ namespace Capercali.WPF.ViewModel.Main
                 this.SelectedEvent = new Event();
                 HostScreen.Router.Navigate.Execute(RxApp.DependencyResolver.GetService(typeof(IEventPageViewModel)));
             });
-            DeleteEvent = new ReactiveCommand(openEventVisible, initialCondition: false);
+            DeleteEvent = new ReactiveCommand(openEventVisible, false);
             DeleteEvent
-                .Subscribe(async _ => await eventsService.DeleteEvent(SelectedEvent));
-            DeleteEvent.Subscribe(_ => Events.Remove(SelectedEvent));
+                .Subscribe(_ =>
+                {
+                    var args = new ShowDialogArgs("Really remove the selected event?");
+                    args.Return.Where(ok => ok).Subscribe(async ok =>
+                    {
+                        await eventsService.DeleteEvent(SelectedEvent);
+                        Events.Remove(SelectedEvent);
+                    });
+                    ((IAppBootstrapper) HostScreen).ShowDialog.OnNext(args);
+                    
+                });
+
             Load();
         }
 

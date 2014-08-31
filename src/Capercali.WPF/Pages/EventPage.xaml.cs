@@ -15,16 +15,20 @@ namespace Capercali.WPF.Pages
     /// </summary>
     public partial class EventPage : IViewFor<IEventPageViewModel>
     {
+        EventWindowCommands  commands;
+
         public EventPage()
         {
             InitializeComponent();
             var mainWindow = Application.Current.MainWindow as MainWindow;
+            commands = new EventWindowCommands();
             mainWindow.WindowCommandsPanel.Children.Clear();
-            mainWindow.WindowCommandsPanel.Children.Add(new EventWindowCommands());
+            mainWindow.WindowCommandsPanel.Children.Add(commands);
 
             this.WhenNavigatedTo(ViewModel, () =>
             {
                 DataContext = ViewModel;
+                commands.DataContext = ViewModel.Commands;
                 return Disposable.Create(() => { });
             });
         }

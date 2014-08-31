@@ -27,5 +27,10 @@ namespace Capercali.WPF.UserControls
             
 
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

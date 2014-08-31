@@ -4,14 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      d:DesignHeight="500" d:DesignWidth="500"
+      d:DesignHeight="200" d:DesignWidth="500" KeyUp="EventSelectionPage_OnKeyUp"
       >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="250" />
         </Grid.ColumnDefinitions>
-        <DataGrid ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent, Mode=OneWayToSource}" AutoGenerateColumns="False"
+        <DataGrid CanUserDeleteRows="False" ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent, Mode=OneWayToSource}" AutoGenerateColumns="False"
                   IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Binding="{Binding Name}" Header="Name" />
@@ -34,6 +34,5 @@
         <KeyBinding Key="N" Modifiers="Control" Command="{Binding NewEvent}" />
         <KeyBinding Key="O" Modifiers="Control" Command="{Binding OpenEvent}" />
 
-        <KeyBinding Key="Delete"  Command="{Binding DeleteEvent}" />
     </UserControl.InputBindings>
 </UserControl>

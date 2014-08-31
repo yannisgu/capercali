@@ -1,6 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using Capercali.WPF.ViewModel;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace Capercali.WPF
 {
@@ -14,6 +16,15 @@ namespace Capercali.WPF
         {
             InitializeComponent();
             AppBootstrapper = new AppBootstrapper();
+            AppBootstrapper.ShowDialog.Subscribe(async _ =>
+            {
+                var ret = await this.ShowMessageAsync( _.Message,"test", MessageDialogStyle.AffirmativeAndNegative, new MetroDialogSettings()
+                {
+                    ColorScheme = MetroDialogColorScheme.Accented
+                });
+                _.Return.OnNext(ret == MessageDialogResult.Affirmative);
+
+            });
             DataContext = AppBootstrapper;
         }
 
