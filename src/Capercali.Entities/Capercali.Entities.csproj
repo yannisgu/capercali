@@ -43,11 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchiveRunner.cs" />
     <Compile Include="Control.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="EventRunner.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Punch.cs" />
+    <Compile Include="Runner.cs" />
+    <Compile Include="RunnerStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
