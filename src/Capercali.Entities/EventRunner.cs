@@ -20,8 +20,13 @@ namespace Capercali.Entities
             }
         }
 
+
+        public long CourseId { get; set; }
+        public long CategoryId { get; set; }
+
         public IEnumerable<Punch> Punches {get;set;}
 
         public RunnerStatus Status {get;set;}
+
     }
 }

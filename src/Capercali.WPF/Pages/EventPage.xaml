@@ -10,12 +10,12 @@
 
     <Grid>
         <TabControl>
-
-
             <TabItem Header="configuration">
                 <userControls:EventConfiguration DataContext="{Binding EventConfiguration}"></userControls:EventConfiguration>
             </TabItem>
-            <TabItem Header="runners"></TabItem>
+            <TabItem Header="runners">
+                <userControls:EventRunners DataContext="{Binding EventRunners}"></userControls:EventRunners>
+            </TabItem>
         </TabControl>
 
     </Grid>

@@ -28,8 +28,6 @@ namespace Capercali.Entities
 
         public string Email { get; set; }
 
-        public long CourseId { get; set; }
-        public long CategoryId { get; set; }
 
     
     }
