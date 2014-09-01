@@ -6,6 +6,11 @@
              xmlns:userControls="clr-namespace:Capercali.WPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary >
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -27,19 +32,43 @@
                         <ColumnDefinition Width="30"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" >
+                        <Button Margin="5,5,5,5" Name="AddCourseButton">
+                            <StackPanel Orientation="Horizontal">                            
+                                <Rectangle Height="8" Width="8" >
+                                <Rectangle.Fill>
+                                        <VisualBrush Visual="{StaticResource appbar_add}"  />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                                <TextBlock Text="Add" Margin="5,0,0,0"/>
+                            </StackPanel>
 
-                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse, Converter={StaticResource ignoreNewItemPlaceHolderConverter}, Mode=OneWayToSource}" CanUserAddRows="True" Grid.Column="1" SelectionMode="Single" >
+                        </Button>
+                        <DataGrid Name="CoursesDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse, Converter={StaticResource ignoreNewItemPlaceHolderConverter}, Mode=OneWayToSource}" CanUserAddRows="True" SelectionMode="Single" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="name" Binding="{Binding Name}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <DataGrid AutoGenerateColumns="False" Grid.Column="3" ItemsSource="{Binding Controls}" SelectedIndex="{Binding SelectedControlIndex, Mode=OneWayToSource}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn IsReadOnly="True" Header="Num" Binding="{Binding Number}"></DataGridTextColumn>
-                            <DataGridTextColumn IsReadOnly="False" Header="Code" Binding="{Binding ControlNumber}"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" >
+                        <Button Margin="5,5,5,5" Name="AddControlButton">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Height="8" Width="8" >
+                                    <Rectangle.Fill>
+                                        <VisualBrush Visual="{StaticResource appbar_add}"  />
+                                    </Rectangle.Fill>
+                                </Rectangle>
 
+                                <TextBlock Text="Add" Margin="5,0,0,0" />
+                            </StackPanel>
+                        </Button>
+                        <DataGrid AutoGenerateColumns="False" Grid.Column="3" ItemsSource="{Binding Controls}" SelectedIndex="{Binding SelectedControlIndex, Mode=OneWayToSource}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn IsReadOnly="True" Header="Num" Binding="{Binding Number}"></DataGridTextColumn>
+                                <DataGridTextColumn IsReadOnly="False" Header="Code" Binding="{Binding ControlNumber}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
                     <StackPanel Grid.Column="5">
                         <Button  Style="{DynamicResource MetroCircleButtonStyle}" Height="40" Width="40" Command="{Binding ControlUp}">
                             <Rectangle Height="20" Width="20" >
