@@ -18,8 +18,8 @@
         <TabControl FontWeight="Bold" >
             <TabItem Header="general">
                 <StackPanel Orientation="Vertical" >
-                    <userControls:EditRow Label="Name" Value="{Binding EventName}" />
-                    <userControls:EditRow Label="Zero hour" Value="{Binding EventZeroTime}" />
+                    <userControls:EditTextRow Label="Name" Value="{Binding EventName}" />
+                    <userControls:EditTextRow Label="Zero hour" Value="{Binding EventZeroTime}" />
                 </StackPanel>
             </TabItem>
             <TabItem Header="course">

@@ -13,21 +13,26 @@ using Newtonsoft.Json;
 
 namespace Capercali.DataAccess.SimpleStore
 {
-    public class SimpleStoreEventConfigurationService : SimpleStoreBaseService, IEventConfigurationService
+    public class SimpleStoreEventConfigurationService : SimpleStoreEventChildBaseService<Course>, IEventConfigurationService
     {
         public async Task<IEnumerable<Course>> GetCourses(long eventId)
         {
-            return await Cache.GetObject<IEnumerable<Course>>("courses-" + eventId).Catch(Observable.Return(new List<Course>()));
+            return await Get(eventId);
         }
 
         public async Task<long> UpdateCourse(long eventId, Course course)
         {
-            return await UpdateItem("courses-" + eventId, (await GetCourses(eventId)).ToList(), course);
+            return await Update(eventId, course);
         }
 
         public async Task DeleteCourse(long eventId, Course course)
         {
-           await DeleteItem("courses-" + eventId, (await GetCourses(eventId)).ToList(), course);
+            await Delete(eventId, course);
+        }
+
+        public override string Key
+        {
+            get { return "courses-"; }
         }
     }
 }

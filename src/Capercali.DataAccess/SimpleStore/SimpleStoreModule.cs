@@ -9,7 +9,7 @@ namespace Capercali.DataAccess.SimpleStore
         {
             Bind<IEventsService>().To<SimpleStoreEventsService>().InSingletonScope();
             Bind<IEventConfigurationService>().To<SimpleStoreEventConfigurationService>().InSingletonScope();
-            
+            Bind<IEventRunnersService>().To<SimpleStoreEventRunnersService>().InSingletonScope();
          }
     }
 }

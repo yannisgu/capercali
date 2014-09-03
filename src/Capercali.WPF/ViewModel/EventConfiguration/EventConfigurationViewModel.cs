@@ -104,8 +104,8 @@ namespace Capercali.WPF.ViewModel.EventConfiguration
             courseDeleted.Subscribe(async _ => await coursesService.DeleteCourse(Event.Id, _.ToCourse()));
 
             Courses =
-                new ReactiveList<CourseViewModel>(
-                    (await coursesService.GetCourses(Event.Id)).Select(_ => new CourseViewModel(_)));
+                new ReactiveList<CourseViewModel>();
+            Courses.AddRange((await coursesService.GetCourses(Event.Id)).Select(_ => new CourseViewModel(_)));
             Courses.ForEach(BindCourse);
 
             Courses.ChangeTrackingEnabled = true;

@@ -4,6 +4,7 @@ using Capercali.WPF.ViewModel.EventPage;
 using Capercali.WPF.ViewModel.EventRunners;
 using Capercali.WPF.ViewModel.EventWindowCommands;
 using Capercali.WPF.ViewModel.Main;
+using Ninject;
 using Ninject.Modules;
 
 namespace Capercali.WPF.ViewModel
@@ -13,10 +14,10 @@ namespace Capercali.WPF.ViewModel
         public override void Load()
         {
             Bind<IMainViewModel>().To<MainViewModel>().InSingletonScope();
-            Bind<IEventPageViewModel>().To<EventPageViewModel>();
-            Bind<IEventWindowCommands>().To<EventWindowCommands.EventWindowCommands>();
-            Bind<IEventConfigurationViewModel>().To<EventConfigurationViewModel>();
-            Bind<IEventRunnersViewModel>().To<EventRunnersViewModel>();
+            Bind<IEventPageViewModel>().To<EventPageViewModel>().InScope(_ => _.Kernel.Get<IMainViewModel>().SelectedEvent);
+            Bind<IEventWindowCommands>().To<EventWindowCommands.EventWindowCommands>().InScope(_ => Kernel.Get<IMainViewModel>().SelectedEvent);
+            Bind<IEventConfigurationViewModel>().To<EventConfigurationViewModel>().InScope(_ => Kernel.Get<IMainViewModel>().SelectedEvent);
+            Bind<IEventRunnersViewModel>().To<EventRunnersViewModel>().InScope(_ => Kernel.Get<IMainViewModel>().SelectedEvent);
         }
     }
 }

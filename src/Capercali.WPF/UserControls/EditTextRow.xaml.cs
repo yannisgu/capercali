@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +8,6 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -20,27 +18,16 @@ namespace Capercali.WPF.UserControls
     /// <summary>
     /// Interaction logic for EditRow.xaml
     /// </summary>
-    [ContentProperty("Items")]
-    public partial class EditRow : UserControl
+    public partial class EditTextRow : UserControl
     {
-
-        public static readonly DependencyProperty ItemsSourceProperty =
-            ItemsControl.ItemsSourceProperty.AddOwner(typeof(EditRow));
-        public IEnumerable ItemsSource
+        public EditTextRow()
         {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
+            InitializeComponent();
         }
-
-        public ItemCollection Items
-        {
-            get { return _itemsControl.Items; }
-        }
-
 
         public static readonly DependencyProperty labelProperty =
             DependencyProperty.Register("Label", typeof(String),
-                typeof(EditRow), new FrameworkPropertyMetadata(string.Empty));
+                typeof(EditTextRow), new FrameworkPropertyMetadata(string.Empty));
 
         public String Label
         {
@@ -48,10 +35,20 @@ namespace Capercali.WPF.UserControls
             set { SetValue(labelProperty, value); }
         }
 
+        public static readonly DependencyProperty valueProperty =
+            DependencyProperty.Register("Value", typeof (String),
+                typeof (EditTextRow), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public EditRow()
+        public String Value
         {
-            InitializeComponent();
+            get
+            {
+                return GetValue(valueProperty).ToString();
+            }
+            set
+            {
+                SetValue(valueProperty, value);
+            }
         }
     }
 }

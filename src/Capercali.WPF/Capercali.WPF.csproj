@@ -105,11 +105,17 @@
     <Compile Include="UserControls\EditRow.xaml.cs">
       <DependentUpon>EditRow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\EditTextRow.xaml.cs">
+      <DependentUpon>EditTextRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EventConfiguration.xaml.cs">
       <DependentUpon>EventConfiguration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EventRunners.xaml.cs">
+    <Compile Include="Converters\EventRunners.xaml.cs">
       <DependentUpon>EventRunners.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EventRunnersEditForm.xaml.cs">
+      <DependentUpon>EventRunnersEditForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EventWindowCommands.xaml.cs">
       <DependentUpon>EventWindowCommands.xaml</DependentUpon>
@@ -122,6 +128,7 @@
     <Compile Include="ViewModel\CourseViewModel.cs" />
     <Compile Include="ViewModel\EventConfiguration\EventConfigurationViewModel.cs" />
     <Compile Include="ViewModel\EventPage\EventPageViewModel.cs" />
+    <Compile Include="ViewModel\EventRunners\EditEventRunnerViewModel.cs" />
     <Compile Include="ViewModel\EventRunners\EventRunners.cs" />
     <Compile Include="ViewModel\EventRunners\IEventRunners.cs" />
     <Compile Include="ViewModel\EventWindowCommands\EventWindowCommands.cs" />
@@ -159,11 +166,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\EditTextRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\EventConfiguration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\EventRunners.xaml">
+    <Page Include="Converters\EventRunners.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EventRunnersEditForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

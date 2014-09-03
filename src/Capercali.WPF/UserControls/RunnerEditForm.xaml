@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <userControls:EditRow Label="SI-Card"></userControls:EditRow>
-        <userControls:EditRow Label="Firstname"></userControls:EditRow>
-        <userControls:EditRow Label="Lastname"></userControls:EditRow>
-        <userControls:EditRow Label="Location"></userControls:EditRow>
-        <userControls:EditRow Label="Club"></userControls:EditRow>
+        <userControls:EditTextRow Label="SI-Card" Value="{Binding SiNumber}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="Firstname" Value="{Binding FirstName}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="Lastname" Value="{Binding LastName}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="Location" Value="{Binding Location}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="Club" Value="{Binding Club}" ></userControls:EditTextRow>
     </StackPanel>
 </UserControl>
