@@ -21,6 +21,7 @@ namespace Capercali.WPF.ViewModel.EventConfiguration
         private TimeSpan eventZeroTime;
         private int selectedControl;
         private CourseViewModel selectedCourse;
+        private Subject<CourseViewModel> courseDeleted;
 
         public EventConfigurationViewModel(IMainViewModel mainViewModel, IEventsService eventsService,
             IEventConfigurationService coursesService, IScreen screen)
@@ -98,7 +99,9 @@ namespace Capercali.WPF.ViewModel.EventConfiguration
         private async void InitCourses()
         {
             courseChanged = new Subject<CourseViewModel>();
-            courseChanged.Subscribe(_ => coursesService.UpdateCourse(Event.Id, _.ToCourse()));
+            courseChanged.Subscribe(async _ => _.Id = await coursesService.UpdateCourse(Event.Id, _.ToCourse()));
+            courseDeleted = new Subject<CourseViewModel>();
+            courseDeleted.Subscribe(async _ => await coursesService.DeleteCourse(Event.Id, _.ToCourse()));
 
             Courses =
                 new ReactiveList<CourseViewModel>(
@@ -109,6 +112,7 @@ namespace Capercali.WPF.ViewModel.EventConfiguration
             Courses.ItemChanged.Select(_ => _.Sender)
                 .Merge(Courses.ItemsAdded)
                 .Subscribe(courseChanged.OnNext);
+            Courses.ItemsRemoved.Subscribe(courseDeleted.OnNext);
             Courses.ItemsAdded.Subscribe(BindCourse);
         }
 

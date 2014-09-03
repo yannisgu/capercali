@@ -20,10 +20,14 @@ namespace Capercali.DataAccess.SimpleStore
             return await Cache.GetObject<IEnumerable<Course>>("courses-" + eventId).Catch(Observable.Return(new List<Course>()));
         }
 
-        public async Task UpdateCourse(long eventId, Course course)
+        public async Task<long> UpdateCourse(long eventId, Course course)
         {
-            await UpdateItem("courses-" + eventId, (await GetCourses(eventId)).ToList(), course);
+            return await UpdateItem("courses-" + eventId, (await GetCourses(eventId)).ToList(), course);
         }
 
+        public async Task DeleteCourse(long eventId, Course course)
+        {
+           await DeleteItem("courses-" + eventId, (await GetCourses(eventId)).ToList(), course);
+        }
     }
 }

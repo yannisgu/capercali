@@ -34,7 +34,7 @@ namespace Capercali.DataAccess.SimpleStore
             get { return cache; }
         }
 
-        protected async Task UpdateItem<T>(string key, List<T> list, T item) where T : IEntity
+        protected async Task<long> UpdateItem<T>(string key, List<T> list, T item) where T : IEntity
         {
             var index = (list.FindIndex(c => c.Id == item.Id));
             if (index >= 0)
@@ -48,6 +48,7 @@ namespace Capercali.DataAccess.SimpleStore
                 list.Add(item);
             }
             await Cache.InsertObject(key, list);
+            return item.Id;
         }
 
 

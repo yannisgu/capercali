@@ -10,8 +10,10 @@ namespace Capercali.DataAccess.Services
    public  interface IEventConfigurationService
     {
         Task<IEnumerable<Course>> GetCourses(long eventId);
-        Task UpdateCourse(long eventId, Course course);
+        Task<long> UpdateCourse(long eventId, Course course);
 
 
+
+        Task DeleteCourse(long eventId, Course course);
     }
 }

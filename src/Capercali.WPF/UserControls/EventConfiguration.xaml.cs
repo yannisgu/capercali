@@ -39,9 +39,21 @@ namespace Capercali.WPF.UserControls
                 var thisItem = CoursesDataGrid.Items[CoursesDataGrid.Items.Count - 1];
                 var cellInfo = new DataGridCellInfo(thisItem, CoursesDataGrid.Columns[0]);
 
-                var cell = (DataGridCell)cellInfo.Column.GetCellContent(cellInfo.Item).Parent;
-                cell.Focus();
-                ((DataGridRow)cell.Parent).IsSelected = true;
+                var cellContent = cellInfo.Column.GetCellContent(cellInfo.Item);
+                if (cellContent != null)
+                {
+                    var cell = (DataGridCell)cellContent.Parent;
+
+                    if (!cell.IsFocused)
+                    {
+                        cell.Focus();
+                    }
+                    var row = FindVisualParent<DataGridRow>(cell);
+                    if (row != null && !row.IsSelected)
+                    {
+                        row.IsSelected = true;
+                    }
+                }
 
                 CoursesDataGrid.BeginEdit();
             });
@@ -50,6 +62,22 @@ namespace Capercali.WPF.UserControls
 
             
         }
+
+        static T FindVisualParent<T>(UIElement element) where T : UIElement
+        {
+            UIElement parent = element;
+            while (parent != null)
+            {
+                T correctlyTyped = parent as T;
+                if (correctlyTyped != null)
+                {
+                    return correctlyTyped;
+                }
+
+                parent = VisualTreeHelper.GetParent(parent) as UIElement;
+            }
+            return null;
+        } 
 
         void EventConfiguration_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
