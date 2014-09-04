@@ -17,6 +17,7 @@ namespace Capercali.WPF.ViewModel.EventRunners
         public EditEventRunnerViewModel(EventRunner runner, IReactiveDerivedList<Course> courses)
         {
             this.Courses = courses;
+            
             Runner = runner;
             InitCommands();
         }

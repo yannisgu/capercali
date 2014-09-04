@@ -22,14 +22,12 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Button Content="Save (ctrl+s)"  Grid.Column="2" Command="{Binding Save}"/>
+                <Button Name="saveButton" Content="Save (ctrl+s)"  Grid.Column="2" Command="{Binding Save}"/>
                 <Button Name="cancelButton" Content="Cancel (esc)" FontWeight="Normal" Command="{Binding Cancel}" Grid.Column="0"/>
             </Grid>
 
         </StackPanel>
     </Grid>
     <UserControl.InputBindings>
-        <KeyBinding Key="S" Modifiers="Control" Command="{Binding Save}"></KeyBinding>
-        <KeyBinding Key="Escape" Command="{Binding Cancel}"></KeyBinding>
     </UserControl.InputBindings>
 </UserControl>

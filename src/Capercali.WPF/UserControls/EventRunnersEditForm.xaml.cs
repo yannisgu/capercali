@@ -33,7 +33,10 @@ namespace Capercali.WPF.UserControls
             {
                 ExecuteCommand(e.OriginalSource as FrameworkElement, cancelButton.Command, sender);
             }
-           // else if(e.Key == Key.S && Keyboard.Modifiers )
+            else if (e.Key == Key.S && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                ExecuteCommand(e.OriginalSource as FrameworkElement, saveButton.Command, sender);
+            }
         }
 
         private void ExecuteCommand(FrameworkElement frameworkElement, ICommand command, object commandArgument )
