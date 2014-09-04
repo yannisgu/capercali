@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Name="editRow">
+    <Grid>
     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
         <TextBlock Text="{Binding Label, ElementName=editRow}" Margin="5,5,10,0" Width="100px"  />
-        <ItemsControl Name="_itemsControl" ItemsSource="{Binding ItemsSource, ElementName=editRow}" IsTabStop="False"/>
+        <Grid Width="100px">
+            <ItemsControl Name="_itemsControl" ItemsSource="{Binding ItemsSource, ElementName=editRow}" IsTabStop="False"/>
+        </Grid>
     </StackPanel>
+    </Grid>
 </UserControl>

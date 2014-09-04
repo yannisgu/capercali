@@ -35,6 +35,10 @@ namespace Capercali.WPF.ViewModel.EventRunners
                 runnersService.UpdateRunners(Event.Id, RegisterRunner.Runner);
                 RegisterRunner.Runner = new EventRunner();
             });
+            RegisterRunner.Cancel.Subscribe(_ =>
+            {
+                RegisterRunner.Runner = new EventRunner();
+            });
         }
 
         private EditEventRunnerViewModel registerRunner;

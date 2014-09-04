@@ -24,7 +24,11 @@ namespace Capercali.WPF.ViewModel.EventRunners
         private void InitCommands()
         {
             Save = new ReactiveCommand();
+            Cancel = new ReactiveCommand();
+
         }
+
+        public ReactiveCommand Cancel { get; private set; }
 
         private EventRunner runner;
 

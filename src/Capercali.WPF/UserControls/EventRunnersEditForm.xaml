@@ -6,24 +6,30 @@
              xmlns:userControls="clr-namespace:Capercali.WPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid KeyUp="UIElement_OnKeyUp" Margin="0,2,0,-2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel>
             <userControls:RunnerEditForm DataContext="{Binding Runner}"></userControls:RunnerEditForm>
-            <ComboBox ItemsSource="{Binding Courses}" DisplayMemberPath="Name"></ComboBox>
-            <Grid Margin="5,5,0,0" >
+            <userControls:EditRow Label="Course">
+                <ComboBox ItemsSource="{Binding Courses}" DisplayMemberPath="Name"></ComboBox>
+            </userControls:EditRow>
+            
+            <Grid Margin="5,10,0,0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Button Content="Save (ctrl+s)"  Grid.Column="2" Command="{Binding Save}"/>
-                <Button Content="Cancel (esc)" FontWeight="Normal" />
-
+                <Button Name="cancelButton" Content="Cancel (esc)" FontWeight="Normal" Command="{Binding Cancel}" Grid.Column="0"/>
             </Grid>
 
         </StackPanel>
     </Grid>
+    <UserControl.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding Save}"></KeyBinding>
+        <KeyBinding Key="Escape" Command="{Binding Cancel}"></KeyBinding>
+    </UserControl.InputBindings>
 </UserControl>
