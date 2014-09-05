@@ -108,10 +108,10 @@
     <Compile Include="UserControls\EditTextRow.xaml.cs">
       <DependentUpon>EditTextRow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\EventConfiguration.xaml.cs">
+    <Compile Include="UserControls\Tabs\EventConfiguration.xaml.cs">
       <DependentUpon>EventConfiguration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\EventRunners.xaml.cs">
+    <Compile Include="UserControls\Tabs\EventRunners.xaml.cs">
       <DependentUpon>EventRunners.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EventRunnersEditForm.xaml.cs">
@@ -129,7 +129,7 @@
     <Compile Include="ViewModel\EventConfiguration\EventConfigurationViewModel.cs" />
     <Compile Include="ViewModel\EventPage\EventPageViewModel.cs" />
     <Compile Include="ViewModel\EventRunners\EditEventRunnerViewModel.cs" />
-    <Compile Include="ViewModel\EventRunners\EventRunners.cs" />
+    <Compile Include="ViewModel\EventRunners\EventRunnersViewModel.cs" />
     <Compile Include="ViewModel\EventRunners\IEventRunners.cs" />
     <Compile Include="ViewModel\EventWindowCommands\EventWindowCommands.cs" />
     <Compile Include="ViewModel\EventConfiguration\IEventConfigurationViewModel.cs" />
@@ -170,11 +170,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\EventConfiguration.xaml">
+    <Page Include="UserControls\Tabs\EventConfiguration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Converters\EventRunners.xaml">
+    <Page Include="UserControls\Tabs\EventRunners.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

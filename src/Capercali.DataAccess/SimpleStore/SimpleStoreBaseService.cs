@@ -18,11 +18,14 @@ namespace Capercali.DataAccess.SimpleStore
     {
         private readonly IBlobCache cache;
 
-        public SimpleStoreBaseService(IBlobCache cache = null)
+        public SimpleStoreBaseService(bool isMock = false)
         {
             BlobCache.ApplicationName = "Capercali";
-            this.cache = cache;
-            if (cache == null)
+            if (isMock)
+            {
+                cache = new InMemoryBlobCache();
+            }
+            else
             {
                 this.cache = BlobCache.LocalMachine;
             }

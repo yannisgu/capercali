@@ -35,7 +35,6 @@ namespace Capercali.WPF.UserControls
             AddCourse.Subscribe(_ =>
             {
                 var item = new CourseViewModel();
-                ViewModel.Courses.Add(item);
                 var thisItem = CoursesDataGrid.Items[CoursesDataGrid.Items.Count - 1];
                 var cellInfo = new DataGridCellInfo(thisItem, CoursesDataGrid.Columns[0]);
 

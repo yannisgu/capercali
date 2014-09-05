@@ -12,6 +12,12 @@ namespace Capercali.DataAccess.SimpleStore
     public abstract class SimpleStoreEventChildBaseService<T> : SimpleStoreBaseService where T : IEntity
     {
 
+        public SimpleStoreEventChildBaseService(bool isCache = false)
+            : base(isCache)
+        {
+            
+        }
+
         public async Task<IEnumerable<T>> Get(long eventId)
         {
             return await Cache.GetObject<IEnumerable<T>>(Key + eventId).Catch(Observable.Return(new List<T>()));

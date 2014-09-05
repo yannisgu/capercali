@@ -10,10 +10,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+        <StackPanel IsEnabled="{Binding IsEnabled}">
             <userControls:RunnerEditForm DataContext="{Binding Runner}"></userControls:RunnerEditForm>
             <userControls:EditRow Label="Course">
-                <ComboBox ItemsSource="{Binding Courses}" DisplayMemberPath="Name"></ComboBox>
+                <ComboBox ItemsSource="{Binding Courses}" SelectedValuePath="Id" SelectedValue="{Binding Runner.CourseId}" DisplayMemberPath="Name"></ComboBox>
             </userControls:EditRow>
             
             <Grid Margin="5,10,0,0" >

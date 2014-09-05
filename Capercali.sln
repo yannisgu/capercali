@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capercali.Entities", "src\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capercali.DataAccess", "src\Capercali.DataAccess\Capercali.DataAccess.csproj", "{DFA9675E-F7B5-4E9C-A5D9-991654B32779}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capercali.UnitTests", "tests\Capercali.UnitTests\Capercali.UnitTests.csproj", "{F7289CDE-AD22-421B-A8FD-B0C22E8880B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DFA9675E-F7B5-4E9C-A5D9-991654B32779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA9675E-F7B5-4E9C-A5D9-991654B32779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA9675E-F7B5-4E9C-A5D9-991654B32779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7289CDE-AD22-421B-A8FD-B0C22E8880B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7289CDE-AD22-421B-A8FD-B0C22E8880B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7289CDE-AD22-421B-A8FD-B0C22E8880B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7289CDE-AD22-421B-A8FD-B0C22E8880B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,5 +12,6 @@ namespace Capercali.DataAccess.Services
         Task<IEnumerable<EventRunner>> GetRunners(long eventId);
         Task<long> UpdateRunners(long eventId, EventRunner runner);
         Task DeleteRunners(long eventId, EventRunner runner);
+        Task<IEnumerable<EventRunner>> Search(long eventId, object searchKey);
     }
 }
