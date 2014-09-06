@@ -12,7 +12,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel IsEnabled="{Binding IsEnabled}">
             <userControls:RunnerEditForm DataContext="{Binding Runner}"></userControls:RunnerEditForm>
-            <userControls:EditRow Label="Course">
+            <userControls:EditRow Label="{DynamicResource course}">
                 <ComboBox ItemsSource="{Binding Courses}" SelectedValuePath="Id" SelectedValue="{Binding Runner.CourseId}" DisplayMemberPath="Name"></ComboBox>
             </userControls:EditRow>
             

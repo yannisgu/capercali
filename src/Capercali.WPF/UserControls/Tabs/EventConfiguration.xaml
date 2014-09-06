@@ -16,13 +16,13 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TabControl FontWeight="Bold" >
-            <TabItem Header="general">
+            <TabItem Header="{DynamicResource general}">
                 <StackPanel Orientation="Vertical" >
-                    <userControls:EditTextRow Label="Name" Value="{Binding EventName}" />
-                    <userControls:EditTextRow Label="Zero hour" Value="{Binding EventZeroTime}" />
+                    <userControls:EditTextRow Label="{DynamicResource eventName}" Value="{Binding EventName}" />
+                    <userControls:EditTextRow Label="{DynamicResource zeroHour}" Value="{Binding EventZeroTime}" />
                 </StackPanel>
             </TabItem>
-            <TabItem Header="course">
+            <TabItem Header="{DynamicResource courses}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0"></ColumnDefinition>
@@ -40,7 +40,7 @@
                                         <VisualBrush Visual="{StaticResource appbar_add}"  />
                                 </Rectangle.Fill>
                             </Rectangle>
-                                <TextBlock Text="Add" Margin="5,0,0,0"/>
+                                <TextBlock Text="{DynamicResource add}" Margin="5,0,0,0"/>
                             </StackPanel>
 
                         </Button>
@@ -59,13 +59,17 @@
                                     </Rectangle.Fill>
                                 </Rectangle>
 
-                                <TextBlock Text="Add" Margin="5,0,0,0" />
+                                <TextBlock Text="{DynamicResource add}" Margin="5,0,0,0" />
                             </StackPanel>
                         </Button>
                         <DataGrid AutoGenerateColumns="False" Grid.Column="3" ItemsSource="{Binding Controls}" SelectedIndex="{Binding SelectedControlIndex, Mode=OneWayToSource}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn IsReadOnly="True" Header="Num" Binding="{Binding Number}"></DataGridTextColumn>
-                                <DataGridTextColumn IsReadOnly="False" Header="Code" Binding="{Binding ControlNumber}"></DataGridTextColumn>
+                                <DataGridTextColumn IsReadOnly="True" Header="{DynamicResource controlNumber}" Binding="{Binding Number}"></DataGridTextColumn>
+                                <DataGridTextColumn IsReadOnly="False"  Binding="{Binding ControlNumber}">
+                                    <DataGridTextColumn.Header>
+                                        <DynamicResource ResourceKey="controlCode"></DynamicResource>
+                                    </DataGridTextColumn.Header>
+                                </DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

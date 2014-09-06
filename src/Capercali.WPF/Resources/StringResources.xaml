@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="openEvent">open selected event (Ctrl+O)</system:String>
+    <system:String x:Key="newEvent">create new event (Ctrl+N)</system:String>
+    <system:String x:Key="eventName">Name</system:String>
+
+    <system:String x:Key="deleteEvent">delete selected event (del)</system:String>
+
+    <system:String x:Key="configurationTab">configuration</system:String>
+    <system:String x:Key="runnersTab">runners</system:String>
+
+    <system:String x:Key="sicard">SI-Card</system:String>
+    <system:String x:Key="firstName">Firstname</system:String>
+    <system:String x:Key="lastName">Lastname</system:String>
+    <system:String x:Key="club">Club</system:String>
+    <system:String x:Key="location">Location</system:String>
+    <system:String x:Key="course">Course</system:String>
+    
+    <system:String x:Key="general">general</system:String>
+    <system:String x:Key="courses">courses</system:String>
+
+    <system:String x:Key="zeroTime">Zero time</system:String>
+    
+    <system:String x:Key="controlNumber">num</system:String>
+    <system:String x:Key="controlCode">code</system:String>
+    
+    <system:String x:Key="add">add</system:String>
+</ResourceDictionary>

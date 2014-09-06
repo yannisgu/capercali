@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <userControls:EditTextRow Label="SI-Card" Value="{Binding SiNumber}"></userControls:EditTextRow>
-        <userControls:EditTextRow Label="Firstname" Value="{Binding FirstName}"></userControls:EditTextRow>
-        <userControls:EditTextRow Label="Lastname" Value="{Binding LastName}"></userControls:EditTextRow>
-        <userControls:EditTextRow Label="Location" Value="{Binding Location}"></userControls:EditTextRow>
-        <userControls:EditTextRow Label="Club" Value="{Binding Club}" ></userControls:EditTextRow>
+        <userControls:EditTextRow Label="{DynamicResource sicard}" Value="{Binding SiNumber}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="{DynamicResource firstName}" Value="{Binding FirstName}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="{DynamicResource lastName}" Value="{Binding LastName}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="{DynamicResource location}" Value="{Binding Location}"></userControls:EditTextRow>
+        <userControls:EditTextRow Label="{DynamicResource club}" Value="{Binding Club}" ></userControls:EditTextRow>
     </StackPanel>
 </UserControl>

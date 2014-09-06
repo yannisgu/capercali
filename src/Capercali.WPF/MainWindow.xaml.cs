@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 using Capercali.WPF.ViewModel;
 using MahApps.Metro.Controls;
@@ -15,6 +17,7 @@ namespace Capercali.WPF
         public MainWindow()
         {
             InitializeComponent();
+            SetLanguageDictionary();
             AppBootstrapper = new AppBootstrapper();
             AppBootstrapper.ShowDialog.Subscribe(async _ =>
             {
@@ -27,6 +30,29 @@ namespace Capercali.WPF
             });
             DataContext = AppBootstrapper;
         }
+
+        private void SetLanguageDictionary()
+        {
+            ResourceDictionary dict = new ResourceDictionary();
+            switch (Thread.CurrentThread.CurrentCulture.ToString())
+            {
+                case "en-US":
+                    dict.Source = new Uri("Resources\\StringResources.xaml",
+                                  UriKind.Relative);
+                    break;
+                case "de-CH":
+                case "de-DE":
+                case "de-AT":
+                    dict.Source = new Uri("Resources\\StringResources.de.xaml",
+                                       UriKind.Relative);
+                    break;
+                default:
+                    dict.Source = new Uri("Resources\\StringResources.xaml",
+                                      UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dict);
+        } 
 
         public StackPanel WindowCommandsPanel
         {

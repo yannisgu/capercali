@@ -14,17 +14,17 @@
         <DataGrid CanUserDeleteRows="False" ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent, Mode=OneWayToSource}" AutoGenerateColumns="False"
                   IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Binding="{Binding Name}" Header="Name" />
+                <DataGridTextColumn Width="*" Binding="{Binding Name}" Header="{DynamicResource eventName}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Margin="35,35,35,0">
-            <Button Content="create new event (Ctrl+N)" Command="{Binding NewEvent}" VerticalAlignment="Top" />
-            <Button Content="open selected event (Ctrl+O)" Margin="0,15,0,0" 
-                    Command="{Binding DeleteEvent}" VerticalAlignment="Top" />
+            <Button Content="{DynamicResource newEvent}" Command="{Binding NewEvent}" VerticalAlignment="Top" />
+            <Button Content="{DynamicResource openEvent}" Margin="0,15,0,0" 
+                    Command="{Binding OpenEvent}" VerticalAlignment="Top" />
             
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Bottom" Margin="35,35,35,35">
-            <Button Content="delete selected event (del)" Margin="0,0,0,0" 
+            <Button Content="{DynamicResource deleteEvent}" Margin="0,0,0,0" 
             	Command="{Binding DeleteEvent}"  VerticalAlignment="Bottom"  />
         </StackPanel>
 
